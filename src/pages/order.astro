@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card p-4">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                        <h2
+                            style="background-color: #00ff88; color: white; padding: 10px 20px; border-radius: 8px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                            Solicitud de Pedidos
+                        </h2>
+                    </div>
+
+                    <form (ngSubmit)="onSubmit()">
+                        <!-- Información del comprador -->
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label for="buyerName" class="form-label">Nombre del Comprador</label>
+                                <input type="text" id="buyerName" class="form-control" formControlName="buyerName"
+                                    required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="contactNumber" class="form-label">Número de Contacto</label>
+                                <input type="text" id="contactNumber" class="form-control"
+                                    formControlName="contactNumber" required>
+                            </div>
+                        </div>
+
+                        <!-- Selección de producto y cantidad de hijuelos -->
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label for="productType" class="form-label">Producto</label>
+                                <select id="productType" class="form-select" formControlName="productType" required>
+                                    <option value="platano">Plátano</option>
+                                    <option value="banano">Banano</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="hijuelosQuantity" class="form-label">Número de Hijuelos</label>
+                                <input type="number" id="hijuelosQuantity" class="form-control"
+                                    formControlName="hijuelosQuantity" required>
+                            </div>
+                        </div>
+
+                        <!-- Dirección de entrega -->
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label for="address1" class="form-label">Dirección de Entrega 1</label>
+                                <input type="text" id="address1" class="form-control" formControlName="address1"
+                                    required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="address2" class="form-label">Dirección de Entrega 2 (Opcional)</label>
+                                <input type="text" id="address2" class="form-control" formControlName="address2">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-4 mb-3">
+                                <label for="city" class="form-label">Ciudad</label>
+                                <input type="text" id="city" class="form-control" formControlName="city" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="state" class="form-label">Estado</label>
+                                <input type="text" id="state" class="form-control" formControlName="state" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="zip" class="form-label">Código Postal</label>
+                                <input type="text" id="zip" class="form-control" formControlName="zip" required>
+                            </div>
+                        </div>
+
+                        <!-- Fecha de entrega -->
+                        <div class="row mb-3">
+                            <div class="col-md-12 mb-3">
+                                <label for="deliveryDate" class="form-label">Fecha de Entrega</label>
+                                <input type="date" id="deliveryDate" class="form-control" formControlName="deliveryDate"
+                                    required>
+                            </div>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="row mb-3">
+                            <div class="col-md-12 text-center">
+                                <button type="button" class="btn btn-secondary w-100 mb-2"
+                                    onclick="generatePayment()">Generar Pago</button>
+                                <button type="submit" class="btn btn-primary w-100" id="submitOrderBtn"
+                                    disabled>Registrar Pedido</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
